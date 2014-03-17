@@ -92,6 +92,8 @@ def send_request(url, params=None, method='GET', data_field='data',
     if data_field is not None:
         content = content[data_field]
     if not resp.ok:
+        if 'data' in content and 'error' not in content:
+            content = content['data']
         try:
             error_msg = "Imgur ERROR message: {}".format(content['error'])
             print(error_msg)
