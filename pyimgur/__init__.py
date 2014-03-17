@@ -1088,6 +1088,7 @@ class Imgur:
         result = self._send_request(REFRESH_URL, params=params, method='POST',
                                     data_field=None)
         self.access_token = result['access_token']
+        self.refresh_token = result['refresh_token']
         return self.access_token
 
     def search_gallery(self, q):
